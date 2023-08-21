@@ -1,0 +1,3 @@
+{
+  "createAirLineEndpoint": "https://api-staging.paystage.net/deposit/intent"
+}

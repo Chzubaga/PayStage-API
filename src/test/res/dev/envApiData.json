@@ -1,0 +1,6 @@
+{
+  "env": "https://api-develop.paystage.net/deposit/intent",
+  "pk": "pk_FHmnhpf8iX8CeZd385tt8RwoqYguL42G",
+  "digest": "129455db9b759ede77fd1c2d89730478",
+  "accept": "application/json"
+}

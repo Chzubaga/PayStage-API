@@ -1,12 +1,14 @@
 package PayStageAPI;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class Payloads {
 
-    public static String getCreateDepositIntentPayloadFromString(String ref_no, String method, String amount){
+    public static String getCreateDepositIntentPayloadFromString(String ref_no, String method, String amount, String currency){
         String payload = "{\n" +
                 "    \"customer\": {\n" +
                 "        \"address_line_1\": \"123 Main Street\",\n" +
@@ -22,42 +24,13 @@ public class Payloads {
                 "    \"details\": {\n" +
                 "        \"reference_no\": \""+ref_no+"\",\n" +
                 "        \"method\": \""+method+"\",\n" +
-                "        \"currency\": \"USD\",\n" +
+                "        \"currency\": \""+currency+"\",\n" +
                 "        \"amount\": "+amount+",\n" +
                 "        \"redirect_url\": \"http://example.com\"\n" +
                 "    }\n" +
                 "}";
         return payload;
     }
-
-    public static Map<String, Object> getCreateCustomerDetailsFromMap(String add1, String city, String country, String email, String fname, String lname, String mobile, String state, String zip){
-
-        Map<String, Object> payload_customer = new HashMap<>();
-        payload_customer.put("customer.address_line_1", add1);
-        payload_customer.put("customer.city", city);
-        payload_customer.put("customer.country", country);
-        payload_customer.put("customer.email", email);
-        payload_customer.put("customer.first_name", fname);
-        payload_customer.put("customer.last_name", lname);
-        payload_customer.put("customer.mobile", mobile);
-        payload_customer.put("customer.state", state);
-        payload_customer.put("customer.zip", zip);
-
-        return payload_customer;
-    }
-
-    public static Map<String, Object> getCreateDetailsFromMap(String ref_no, String method, String currency, String amount, String redURL){
-
-        Map<String, Object> payload_details = new HashMap<>();
-        payload_details.put("details.reference_no", ref_no);
-        payload_details.put("details.method", method);
-        payload_details.put("details.currency", currency);
-        payload_details.put("details.amount", amount);
-        payload_details.put("details.redirect_url", redURL);
-
-        return payload_details;
-    }
-
 
     public static Map<String, Object> getHeadersFromMap(String digest, String pk, String accept){
 
@@ -67,6 +40,18 @@ public class Payloads {
         headers.put("Accept", accept);
 
         return headers;
+    }
+
+    public static String GenenrateRandomRefNo(){
+        int length = 5;
+        boolean useLetters = true;
+        boolean useNumbers = true;
+        String generatedString = RandomStringUtils.random(length, useLetters, useNumbers);
+
+        String refno = "autotest-" + generatedString;
+//        System.out.println("autotest-" + generatedString);
+
+        return refno;
     }
 
 }
