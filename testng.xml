@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:\Users\HP\IdeaProjects\PayStageAPItest\src\test\java\PayStageAPI\Deposit.java">
+        <classes>
+            <class name="PayStageAPI.Deposit">
+                <methods>
+                    <include name="dixonPayDeposit"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

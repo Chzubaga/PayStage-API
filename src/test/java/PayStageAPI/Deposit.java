@@ -13,6 +13,7 @@ public class Deposit {
     @Test
     public void dixonPayDeposit() throws IOException {
 
+        System.out.println(System.getProperty("env")+ " env value");
         String env = System.getProperty("env") == null ? "dev" : System.getProperty("env");
         Map<String,String> data = JsonUtils.getJsonDataAsMap(""+env+"/envApiData.json");
         String endpoint = data.get("env");
